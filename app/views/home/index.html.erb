@@ -7,10 +7,10 @@
 <div class="card-list">
   <% if(@result.present?) %>
     <% @result.each do |repo| %>
-      <div class="card">
-        <%= content_tag(:span, repo['full_name'], class: "repo-name") %>
-        <%= content_tag(:span, repo['description'], class: "repo-description") %>
-      </div>
+      <%= link_to repo['html_url'], target: "_blank", class: 'card' do %>
+          <%= content_tag(:span, repo['full_name'], class: "repo-name") %>
+          <%= content_tag(:span, repo['description'], class: "repo-description") %>
+      <% end %>
     <% end %>
   <% end %>
 </div>

@@ -35,6 +35,11 @@ input[type=text] {
   gap: 8px;
 }
 
+.card-list a {
+  color: black;
+  text-decoration: none;
+}
+
 .card {
   cursor: pointer;
   display: flex;
