@@ -1,0 +1,21 @@
+<%= form_tag('/', method: :get) do %>
+  <%= label_tag :query, "All github repositories containing" %>
+  <div>
+    <%= text_field_tag :query, params[:query] %>
+    <% flash.each do |type, msg| %>
+      <div class="errors" >
+        <%= msg %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+
+<% if(@result.present?) %>
+  <% @result.each do |repo| %>
+  <div>
+      <%= content_tag(:span, repo['full_name']) %>
+      <%= content_tag(:span, repo['description']) %>
+  </div>
+  <% end %>
+<% end %>
