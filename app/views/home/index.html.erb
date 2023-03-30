@@ -1,13 +1,6 @@
 <%= form_tag('/', method: :get, class: 'form') do %>
-  <%= label_tag :query, "All github repositories containing" %>
-  <div>
-    <%= text_field_tag :query, params[:query] %>
-    <% flash.each do |type, msg| %>
-      <div class="errors" >
-        <%= msg %>
-      </div>
-    <% end %>
-  </div>
+  <%= label_tag :query, "All github repositories containing" %>"
+  <%= text_field_tag :query, params[:query], placeholder: "hello world", id: 'input' %>"
 <% end %>
 
 

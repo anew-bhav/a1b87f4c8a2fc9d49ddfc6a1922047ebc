@@ -14,4 +14,20 @@
   <body>
     <%= yield %>
   </body>
+
+  <script >
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const inputMinWidth = (element) => {
+        return Math.max(element.value.length, element.getAttribute('placeholder').length) + 'ch'
+      }
+
+      let inputField = document.querySelector('#input')
+      inputField.style.width = inputMinWidth(inputField)
+      inputField.addEventListener('input', (event) => {
+        event.target.style.width = inputMinWidth(event.target)
+      })
+
+    })
+  </script>
 </html>
