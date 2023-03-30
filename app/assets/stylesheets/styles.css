@@ -1,0 +1,64 @@
+body {
+  font-family: 'Chivo', sans-serif;
+}
+
+.form {
+  font-size: 24px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 4px;
+  padding: 8px;
+  background: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  width: 100%;
+}
+
+input[type=text] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  font-size: 24px;
+  box-sizing: border-box;
+}
+
+.card-list {
+  display: grid;
+  margin-top: 100px;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.card {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border: 1px solid grey;
+  border-radius: 4px;
+  padding: 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover{
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+}
+
+.repo-name {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'lato', sans-serif;
+}
+
+.repo-description {
+  color: grey;
+}
+
+.errors {
+  color: red;
+  font-size: 16px;
+}

@@ -1,4 +1,4 @@
-<%= form_tag('/', method: :get) do %>
+<%= form_tag('/', method: :get, class: 'form') do %>
   <%= label_tag :query, "All github repositories containing" %>
   <div>
     <%= text_field_tag :query, params[:query] %>
@@ -11,11 +11,13 @@
 <% end %>
 
 
-<% if(@result.present?) %>
-  <% @result.each do |repo| %>
-  <div>
-      <%= content_tag(:span, repo['full_name']) %>
-      <%= content_tag(:span, repo['description']) %>
-  </div>
+<div class="card-list">
+  <% if(@result.present?) %>
+    <% @result.each do |repo| %>
+      <div class="card">
+        <%= content_tag(:span, repo['full_name'], class: "repo-name") %>
+        <%= content_tag(:span, repo['description'], class: "repo-description") %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
