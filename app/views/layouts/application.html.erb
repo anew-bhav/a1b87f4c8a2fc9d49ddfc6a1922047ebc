@@ -18,14 +18,21 @@
   <script >
     document.addEventListener("DOMContentLoaded", () => {
 
-      const inputMinWidth = (element) => {
-        return Math.max(element.value.length, element.getAttribute('placeholder').length) + 'ch'
+      const queryInputField = document.querySelector('#input')
+      const perPageSelector = document.querySelector('#per_page')
+
+
+      const updateQueryParam = (param, value) => {
+        let url = new URL(window.location)
+        url.searchParams.has(param) ? url.searchParams.set(param, value) : url.searchParams.append(param, value)
+        url.search = url.searchParams
+        url = url.toString()
+        window.location = url
       }
 
-      let inputField = document.querySelector('#input')
-      inputField.style.width = inputMinWidth(inputField)
-      inputField.addEventListener('input', (event) => {
-        event.target.style.width = inputMinWidth(event.target)
+
+      perPageSelector.addEventListener('change', (element) => {
+        updateQueryParam('per_page', element.target.value)
       })
 
     })

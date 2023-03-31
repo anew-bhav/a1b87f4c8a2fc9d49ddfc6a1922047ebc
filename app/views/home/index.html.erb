@@ -1,16 +1,31 @@
-<%= form_tag('/', method: :get, class: 'form') do %>
-  <%= label_tag :query, "All github repositories containing" %>"
-  <%= text_field_tag :query, params[:query], placeholder: "hello world", id: 'input' %>"
-<% end %>
+<div class="page-wrapper">
+
+  <%= form_tag('/', method: :get, class: 'form') do %>
+    <div id="query-wrapper">
+      <%= label_tag :query, "All github repositories containing" %>
+      <div>
+      "
+        <%= text_field_tag :query, params[:query], placeholder: "hello world", id: 'input' %>
+      "
+      </div>
+    </div>
 
 
-<div class="card-list">
-  <% if(@result.present?) %>
-    <% @result.each do |repo| %>
-      <%= link_to repo['html_url'], target: "_blank", class: 'card' do %>
-          <%= content_tag(:span, repo['full_name'], class: "repo-name") %>
-          <%= content_tag(:span, repo['description'], class: "repo-description") %>
+    <div id="per-page-wrapper">
+      <%= label_tag :per_page, "Results per page" %>
+      <%= select_tag "per_page", options_for_select([10, 20, 30, 40], (params[:per_page] || 10)) %>
+    </div>
+  <% end %>
+
+
+  <div class="card-list">
+    <% if(@result.present?) %>
+      <% @result.each do |repo| %>
+        <%= link_to repo['html_url'], target: "_blank", class: 'card' do %>
+            <%= content_tag(:span, repo['full_name'], class: "repo-name") %>
+            <%= content_tag(:span, repo['description'], class: "repo-description") %>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
