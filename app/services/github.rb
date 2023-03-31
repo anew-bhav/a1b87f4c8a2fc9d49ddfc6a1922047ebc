@@ -5,7 +5,7 @@ class Github
     if response.status == 200
       { success: true, data: JSON.parse(response.body) }
     else
-      { success: false }
+      { success: false, error: JSON.parse(response.body) }
     end
   end
 end

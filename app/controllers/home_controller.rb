@@ -7,10 +7,10 @@ class HomeController < ApplicationController
       if response[:success]
         @result = response[:data]['items']
       else
-        flash.now[:notice] = "something went wrong, try again"
+        flash.now[:notice] = response[:error]["message"]
       end
     else
-      flash.now[:notice] = "cannot be empty"
+      flash.now[:notice] = "Type search keyword in the field and press ⏎ Enter/Return"
     end
   end
 end

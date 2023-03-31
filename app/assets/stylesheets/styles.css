@@ -98,6 +98,12 @@ input[type=text] {
   text-decoration: none;
 }
 
+.card-list div {
+  align-self: center;
+  justify-self: center;
+  margin-left: 15px
+}
+
 .card {
   cursor: pointer;
   display: flex;

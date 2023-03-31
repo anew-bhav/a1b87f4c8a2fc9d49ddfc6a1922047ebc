@@ -37,6 +37,14 @@
             <%= content_tag(:span, highlight(repo['description'], params[:query]), class: "repo-description") %>
         <% end %>
       <% end %>
+
+      <% else %>
+
+      <% flash.each do |type, msg| %>
+        <div>
+          <%= msg %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
