@@ -18,6 +18,7 @@
   <script >
     document.addEventListener("DOMContentLoaded", () => {
 
+      const queryField = document.querySelector('#input')
       const perPageSelector = document.querySelector('#per_page')
       const pageNavigator = document.querySelector('#page-navigator')
       const perviousPageButton = document.querySelector('#previous-button')
@@ -42,6 +43,15 @@
           return url
         }
       }
+
+      document.addEventListener('keydown', (event) => {
+        if(event.key === 'Enter'){
+          event.preventDefault();
+          console.log('i was called')
+          let url = updateQueryParam('query', queryField.value)
+          window.location = url.toString();
+        }
+      })
 
       perPageSelector.addEventListener('change', (element) => {
         let url = updateQueryParam('per_page', element.target.value)
