@@ -20,12 +20,12 @@
         <button id="next-button">
           >
         </button>
-
       <% end %>
-        <div id="per-page-wrapper">
-          <%= label_tag :per_page, "Results per page" %>
-          <%= select_tag "per_page", options_for_select([10, 20, 30, 40], (params[:per_page] || 10)) %>
-        </div>
+
+      <div id="per-page-wrapper">
+        <%= label_tag :per_page, "Results per page" %>
+        <%= select_tag "per_page", options_for_select([10, 20, 30, 40], (params[:per_page] || 10)) %>
+      </div>
     <% end %>
   </div>
 
