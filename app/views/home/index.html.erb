@@ -33,8 +33,8 @@
     <% if(@result.present?) %>
       <% @result.each do |repo| %>
         <%= link_to repo['html_url'], target: "_blank", class: 'card' do %>
-            <%= content_tag(:span, repo['full_name'], class: "repo-name") %>
-            <%= content_tag(:span, repo['description'], class: "repo-description") %>
+            <%= content_tag(:span, highlight(repo['full_name'], params[:query]), class: "repo-name") %>
+            <%= content_tag(:span, highlight(repo['description'], params[:query]), class: "repo-description") %>
         <% end %>
       <% end %>
     <% end %>
