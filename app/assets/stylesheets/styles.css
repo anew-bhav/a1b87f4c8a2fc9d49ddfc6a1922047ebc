@@ -56,6 +56,24 @@ input[type=text] {
   gap: 2px
 }
 
+#page-navigator {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+}
+
+#page-navigator button {
+  font-weight: bold;
+  border: none;
+  background: white;
+  transition: box-shadow 0.3s ease-in-out;
+  border-radius: 4px;
+
+}
+#page-navigator button:hover {
+  border: none;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+}
 
 .card-list {
   overflow-y: scroll;
