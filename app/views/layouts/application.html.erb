@@ -24,7 +24,7 @@
       const perviousPageButton = document.querySelector('#previous-button')
       const nextPageButton = document.querySelector('#next-button')
 
-      const currentPage = parseInt(pageNavigator.dataset.currentPage)
+      const currentPage = parseInt(pageNavigator?.dataset?.currentPage)
 
       if(currentPage === 1){
         perviousPageButton.disabled = true
@@ -47,25 +47,24 @@
       document.addEventListener('keydown', (event) => {
         if(event.key === 'Enter'){
           event.preventDefault();
-          console.log('i was called')
           let url = updateQueryParam('query', queryField.value)
           window.location = url.toString();
         }
       })
 
-      perPageSelector.addEventListener('change', (element) => {
+      perPageSelector?.addEventListener('change', (element) => {
         let url = updateQueryParam('per_page', element.target.value)
         window.location = updateQueryParam('page', 1, url).toString();
       })
 
-      nextPageButton.addEventListener('click', (element) => {
+      nextPageButton?.addEventListener('click', (element) => {
         element.preventDefault();
 
         let url = updateQueryParam('page', currentPage + 1)
         window.location = url.toString();
       })
 
-      perviousPageButton.addEventListener('click', (element) => {
+      perviousPageButton?.addEventListener('click', (element) => {
         element.preventDefault();
 
         if(currentPage === 1){
