@@ -18,21 +18,52 @@
   <script >
     document.addEventListener("DOMContentLoaded", () => {
 
-      const queryInputField = document.querySelector('#input')
+      // const queryInputField = document.querySelector('#input')
       const perPageSelector = document.querySelector('#per_page')
+      const pageNavigator = document.querySelector('#page-navigator')
+      const perviousPageButton = document.querySelector('#previous-button')
+      const nextPageButton = document.querySelector('#next-button')
 
+      const currentPage = parseInt(pageNavigator.dataset.currentPage)
 
-      const updateQueryParam = (param, value) => {
-        let url = new URL(window.location)
-        url.searchParams.has(param) ? url.searchParams.set(param, value) : url.searchParams.append(param, value)
-        url.search = url.searchParams
-        url = url.toString()
-        window.location = url
+      if(currentPage === 1){
+        perviousPageButton.disabled = true
       }
 
+      const updateQueryParam = (param, value, url=null) => {
+        let destinationURL;
+        if(url === null) {
+          destinationURL = new URL(window.location)
+          destinationURL.searchParams.has(param) ? destinationURL.searchParams.set(param, value) : destinationURL.searchParams.append(param, value)
+          destinationURL.search = destinationURL.searchParams
+          return destinationURL
+        } else {
+          url.searchParams.has(param) ? url.searchParams.set(param, value) : url.searchParams.append(param, value)
+          url.search = url.searchParams
+          return url
+        }
+      }
 
       perPageSelector.addEventListener('change', (element) => {
-        updateQueryParam('per_page', element.target.value)
+        let url = updateQueryParam('per_page', element.target.value)
+        window.location = updateQueryParam('page', 1, url).toString();
+      })
+
+      nextPageButton.addEventListener('click', (element) => {
+        element.preventDefault();
+
+        let url = updateQueryParam('page', currentPage + 1)
+        window.location = url.toString();
+      })
+
+      perviousPageButton.addEventListener('click', (element) => {
+        element.preventDefault();
+
+        if(currentPage === 1){
+          return
+        }
+        let url = updateQueryParam('page', currentPage - 1)
+        window.location = url.toString()
       })
 
     })

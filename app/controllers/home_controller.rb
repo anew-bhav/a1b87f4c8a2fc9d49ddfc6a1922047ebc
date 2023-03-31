@@ -1,8 +1,9 @@
 class HomeController < ApplicationController
-
+#
   def index
+    @page = params[:page] || 1
     if params[:query].present?
-      response = Github.respositories(params[:query])
+      response = Github.respositories(params[:query], params[:per_page], @page)
       if response[:success]
         @result = response[:data]['items']
       else
@@ -13,3 +14,4 @@ class HomeController < ApplicationController
     end
   end
 end
+
