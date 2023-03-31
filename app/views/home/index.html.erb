@@ -32,19 +32,26 @@
   <div class="card-list">
     <% if(@result.present?) %>
       <% @result.each do |repo| %>
+
         <%= link_to repo['html_url'], target: "_blank", class: 'card' do %>
             <%= content_tag(:span, highlight(repo['full_name'], params[:query]), class: "repo-name") %>
             <%= content_tag(:span, highlight(repo['description'], params[:query]), class: "repo-description") %>
         <% end %>
+
       <% end %>
 
-      <% else %>
+
+    <% else %>
+      <% if @result&.size == 0 %>
+        <%= content_tag :div, "No results found" %>
+      <% end %>
 
       <% flash.each do |type, msg| %>
         <div>
           <%= msg %>
         </div>
       <% end %>
+
     <% end %>
   </div>
 </div>
